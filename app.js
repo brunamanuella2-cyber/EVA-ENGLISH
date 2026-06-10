@@ -12,7 +12,7 @@ let indice =
 function mostrarFrase() {
 
   document.getElementById("frase").innerText =
-    frases[indice];
+  frases[indice].texto;
 
   document.getElementById("contador").innerText =
     `Frase ${indice + 1} de ${frases.length}`;
@@ -57,7 +57,7 @@ function atualizarVelocidade() {
 }
 
 function ouvirFrase() {
-  const frase = frases[indice];
+  const frase = frases[indice].texto;
 
   const fala = new SpeechSynthesisUtterance(frase);
 
