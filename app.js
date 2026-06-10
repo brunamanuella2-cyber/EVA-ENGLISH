@@ -28,6 +28,7 @@ let frases = JSON.parse(localStorage.getItem("frasesSalvas")) || [
 
 let indice =
   parseInt(localStorage.getItem("indiceAtual")) || 0;
+let frasesTreino = [...frases];
 
 let movendo = false;
 let inicioX = 0;
@@ -47,12 +48,12 @@ function textoDaFrase(item) {
 
 function mostrarFrase() {
   document.getElementById("frase").innerText =
-    textoDaFrase(frases[indice]);
+    textoDaFrase(frasesTreino[indice])
 
   document.getElementById("contador").innerText =
-    `Frase ${indice + 1} de ${frases.length}`;
+    `Frase ${indice + 1} de ${frasesTreino.length}`
   document.getElementById("infoFrase").innerText =
-  `${frases[indice].fase} • ${frases[indice].verbo}`;
+  `${frasesTreino[indice].fase} • ${frasesTreino[indice].verbo}`
 
   localStorage.setItem("indiceAtual", indice);
 }
