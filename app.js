@@ -136,6 +136,8 @@ function voltarMenuDasFases() {
 function abrirVerbos() {
   document.getElementById("menu").style.display = "none";
   document.getElementById("verbos").style.display = "block";
+
+  atualizarListaVerbos();
 }
 
 function voltarMenuDosVerbos() {
