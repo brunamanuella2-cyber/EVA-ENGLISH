@@ -96,7 +96,11 @@ button {
   font-size: 14px;
   letter-spacing: 0.5px;
 }
-
+#menu button {
+  display: block;
+  width: 280px;
+  margin: 12px auto;
+}
 .cardArea #frase {
   margin: 0;
 }
