@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <title>Eva English</title>
 </head>
 <body>
-  <h1>Eva English</h1>
-  <p>Meu app de repetição em inglês.</p>
+  <section id="inicio">
+    <h1>Eva English</h1>
+    <p>Meu app de repetição em inglês.</p>
+    <button onclick="comecarTreino()">Começar treino</button>
+  </section>
 
-  <button>Começar treino</button>
-<div id="frase"></div>
+  <section id="treino" style="display: none;">
+    <h1>Treino</h1>
+    <div id="frase"></div>
+    <button onclick="proximaFrase()">Próxima frase</button>
+  </section>
 
-<button onclick="proximaFrase()">Próxima frase</button>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
