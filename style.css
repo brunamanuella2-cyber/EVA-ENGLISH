@@ -24,3 +24,14 @@ button {
   border-radius: 12px;
   font-size: 18px;
 }
+#frase {
+  background-color: white;
+  color: #111827;
+  max-width: 500px;
+  margin: 30px auto 20px auto;
+  padding: 25px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.4;
+}
