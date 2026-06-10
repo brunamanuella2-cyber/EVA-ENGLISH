@@ -53,3 +53,20 @@ button {
   transform: translate(-420px, -80px) rotate(-15deg) scale(0.9);
   opacity: 0;
 }
+#treino {
+  position: relative;
+}
+
+#botaoReiniciar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 24px;
+}
