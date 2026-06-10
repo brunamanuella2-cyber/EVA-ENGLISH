@@ -87,3 +87,67 @@ document.addEventListener("touchend", function(event) {
     fraseAnterior();
   }
 });
+const card = document.getElementById("frase");
+
+let movendo = false;
+let inicioX = 0;
+let atualX = 0;
+
+card.addEventListener("touchstart", (e) => {
+  movendo = true;
+
+  inicioX = e.touches[0].clientX;
+
+  card.classList.add("arrastando");
+});
+
+card.addEventListener("touchmove", (e) => {
+  if (!movendo) return;
+
+  atualX = e.touches[0].clientX - inicioX;
+
+  card.style.transform = `translateX(${atualX}px)`;
+
+  const opacidade =
+    1 - Math.min(Math.abs(atualX) / 300, 0.7);
+
+  card.style.opacity = opacidade;
+});
+
+card.addEventListener("touchend", () => {
+  movendo = false;
+
+  card.classList.remove("arrastando");
+
+  if (atualX > 120) {
+    card.classList.add("saindo-direita");
+
+    setTimeout(() => {
+      fraseAnterior();
+
+      resetarCard();
+    }, 200);
+
+  } else if (atualX < -120) {
+    card.classList.add("saindo-esquerda");
+
+    setTimeout(() => {
+      proximaFrase();
+
+      resetarCard();
+    }, 200);
+
+  } else {
+    resetarCard();
+  }
+});
+
+function resetarCard() {
+  card.style.transform = "";
+  card.style.opacity = "";
+
+  card.classList.remove("saindo-direita");
+  card.classList.remove("saindo-esquerda");
+
+  atualX = 0;
+}
