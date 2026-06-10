@@ -196,3 +196,9 @@ function voltarMenu() {
   document.getElementById("menu").style.display =
     "block";
 }
+function voltarMenuDoTreino() {
+  document.getElementById("treino").style.display = "none";
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("gerenciador").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
