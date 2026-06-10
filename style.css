@@ -35,3 +35,21 @@ button {
   font-weight: bold;
   line-height: 1.4;
 }
+#frase {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  touch-action: pan-y;
+}
+
+#frase.arrastando {
+  transition: none;
+}
+
+#frase.saindo-direita {
+  transform: translateX(300px);
+  opacity: 0;
+}
+
+#frase.saindo-esquerda {
+  transform: translateX(-300px);
+  opacity: 0;
+}
