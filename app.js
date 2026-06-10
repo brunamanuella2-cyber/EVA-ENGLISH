@@ -63,3 +63,20 @@ function ouvirFrase() {
   speechSynthesis.cancel();
   speechSynthesis.speak(fala);
 }
+function fraseAnterior() {
+  indice--;
+
+  if (indice < 0) {
+    indice = frases.length - 1;
+  }
+
+  mostrarFrase();
+}
+
+function atualizarVelocidade() {
+  const velocidade =
+    document.getElementById("velocidade").value;
+
+  document.getElementById("valorVelocidade").innerText =
+    velocidade + "x";
+}
