@@ -51,6 +51,8 @@ function mostrarFrase() {
 
   document.getElementById("contador").innerText =
     `Frase ${indice + 1} de ${frases.length}`;
+  document.getElementById("infoFrase").innerText =
+  `${frases[indice].fase} • ${frases[indice].verbo}`;
 
   localStorage.setItem("indiceAtual", indice);
 }
