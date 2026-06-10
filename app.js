@@ -103,14 +103,12 @@ function ouvirFrase() {
     speechSynthesis.getVoices();
 
   const vozIngles = vozes.find(voz =>
-    voz.lang === "en-US" ||
-    voz.lang === "en-GB" ||
-    voz.lang.startsWith("en")
-  );
+  voz.lang === "en-US"
+);
 
   if (vozIngles) {
     fala.voice = vozIngles;
-    fala.lang = vozIngles.lang;
+    fala.lang = "en-US";
   } else {
     fala.lang = "en-US";
   }
