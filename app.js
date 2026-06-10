@@ -31,6 +31,8 @@ let indice = parseInt(localStorage.getItem("indiceAtual")) || 0;
 let movendo = false;
 let inicioX = 0;
 let atualX = 0;
+let origemTreino = "menu";
+let blocoVerbosAtual = null;
 
 function textoDaFrase(item) {
   if (typeof item === "string") return item;
@@ -66,6 +68,7 @@ function fraseAnterior() {
 }
 
 function comecarTreino() {
+  origemTreino = "menu";
   frasesTreino = [...frases];
 
   document.getElementById("inicio").style.display = "none";
@@ -131,6 +134,13 @@ function voltarInicio() {
 
 function voltarMenuDoTreino() {
   document.getElementById("treino").style.display = "none";
+
+  if (origemTreino === "verbos" && blocoVerbosAtual) {
+    document.getElementById("verbos").style.display = "block";
+    mostrarBlocoVerbos(blocoVerbosAtual.inicio, blocoVerbosAtual.fim);
+    return;
+  }
+
   document.getElementById("menu").style.display = "block";
 }
 
@@ -301,6 +311,7 @@ function atualizarListaVerbos() {
   
 }
 function mostrarBlocoVerbos(inicio, fim) {
+  blocoVerbosAtual = { inicio, fim };
   const listaBlocos = document.getElementById("listaBlocosVerbos");
   const lista = document.getElementById("listaVerbos");
   const titulo = document.getElementById("tituloVerbos");
@@ -333,6 +344,7 @@ function mostrarBlocoVerbos(inicio, fim) {
 }
 
 function treinarVerbo(verboEscolhido) {
+  origemTreino = "verbos";
   frasesTreino = frases.filter(item => item.verbo === verboEscolhido);
 
   if (frasesTreino.length === 0) {
