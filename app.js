@@ -7,11 +7,10 @@ const frases = [
 ];
 
 let indice = 0;
-let toqueInicioX = 0;
-let toqueFimX = 0;
 
 function mostrarFrase() {
   document.getElementById("frase").innerText = frases[indice];
+
   document.getElementById("contador").innerText =
     `Frase ${indice + 1} de ${frases.length}`;
 }
@@ -38,18 +37,25 @@ function fraseAnterior() {
 
 function comecarTreino() {
   document.getElementById("inicio").style.display = "none";
+
   document.getElementById("treino").style.display = "block";
+
   mostrarFrase();
 }
 
 function atualizarVelocidade() {
-  const velocidade = document.getElementById("velocidade").value;
-  document.getElementById("valorVelocidade").innerText = velocidade + "x";
+  const velocidade =
+    document.getElementById("velocidade").value;
+
+  document.getElementById("valorVelocidade").innerText =
+    velocidade + "x";
 }
 
 function ouvirFrase() {
   const frase = frases[indice];
+
   const fala = new SpeechSynthesisUtterance(frase);
+
   const vozes = speechSynthesis.getVoices();
 
   const vozIngles = vozes.find(voz =>
@@ -65,28 +71,15 @@ function ouvirFrase() {
     fala.lang = "en-US";
   }
 
-  const velocidade = document.getElementById("velocidade").value;
+  const velocidade =
+    document.getElementById("velocidade").value;
+
   fala.rate = velocidade;
 
   speechSynthesis.cancel();
   speechSynthesis.speak(fala);
 }
 
-document.addEventListener("touchstart", function(event) {
-  toqueInicioX = event.changedTouches[0].screenX;
-});
-
-document.addEventListener("touchend", function(event) {
-  toqueFimX = event.changedTouches[0].screenX;
-
-  if (toqueInicioX - toqueFimX > 50) {
-    proximaFrase();
-  }
-
-  if (toqueFimX - toqueInicioX > 50) {
-    fraseAnterior();
-  }
-});
 const card = document.getElementById("frase");
 
 let movendo = false;
@@ -120,6 +113,7 @@ card.addEventListener("touchend", () => {
   card.classList.remove("arrastando");
 
   if (atualX > 120) {
+
     card.classList.add("saindo-direita");
 
     setTimeout(() => {
@@ -129,6 +123,7 @@ card.addEventListener("touchend", () => {
     }, 200);
 
   } else if (atualX < -120) {
+
     card.classList.add("saindo-esquerda");
 
     setTimeout(() => {
@@ -144,9 +139,11 @@ card.addEventListener("touchend", () => {
 
 function resetarCard() {
   card.style.transform = "";
+
   card.style.opacity = "";
 
   card.classList.remove("saindo-direita");
+
   card.classList.remove("saindo-esquerda");
 
   atualX = 0;
