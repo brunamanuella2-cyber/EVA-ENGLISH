@@ -99,7 +99,11 @@ card.addEventListener("touchmove", (e) => {
 
   atualX = e.touches[0].clientX - inicioX;
 
-  card.style.transform = `translateX(${atualX}px)`;
+  const subir = Math.abs(atualX) * -0.15;
+const girar = atualX * 0.04;
+
+card.style.transform =
+  `translate(${atualX}px, ${subir}px) rotate(${girar}deg) scale(0.98)`;
 
   const opacidade =
     1 - Math.min(Math.abs(atualX) / 300, 0.7);
