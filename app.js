@@ -32,9 +32,23 @@ function ouvirFrase() {
   const frase = frases[indice];
 
   const fala = new SpeechSynthesisUtterance(frase);
+  const vozes = speechSynthesis.getVoices();
 
-  fala.lang = "en-US";
-  fala.rate = 0.9;
+  const vozIngles = vozes.find(voz =>
+    voz.lang === "en-US" ||
+    voz.lang === "en-GB" ||
+    voz.lang.startsWith("en")
+  );
 
+  if (vozIngles) {
+    fala.voice = vozIngles;
+    fala.lang = vozIngles.lang;
+  } else {
+    fala.lang = "en-US";
+  }
+
+  fala.rate = 0.85;
+
+  speechSynthesis.cancel();
   speechSynthesis.speak(fala);
 }
