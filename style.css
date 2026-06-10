@@ -55,12 +55,14 @@ button {
 }
 #treino {
   position: relative;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 #botaoReiniciar {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 30px;
+  right: 30px;
   background-color: transparent;
   color: white;
   border: 1px solid white;
