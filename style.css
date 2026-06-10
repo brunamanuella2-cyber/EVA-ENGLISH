@@ -45,11 +45,11 @@ button {
 }
 
 #frase.saindo-direita {
-  transform: translateX(300px);
+  transform: translate(420px, -80px) rotate(15deg) scale(0.9);
   opacity: 0;
 }
 
 #frase.saindo-esquerda {
-  transform: translateX(-300px);
+  transform: translate(-420px, -80px) rotate(-15deg) scale(0.9);
   opacity: 0;
 }
