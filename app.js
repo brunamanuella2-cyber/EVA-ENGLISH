@@ -25,7 +25,6 @@ const verbosBase = [
   "wait", "serve", "die", "send", "expect", "build", "stay", "fall", "cut", "reach",
   "kill", "remain", "suggest", "raise", "pass", "sell", "require", "report", "decide", "pull"
 ];
-
 let frasesTreino = [...frases];
 let indice = parseInt(localStorage.getItem("indiceAtual")) || 0;
 
