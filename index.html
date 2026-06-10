@@ -24,7 +24,15 @@
   <h1>Menu</h1>
 
   <button onclick="comecarTreino()">
-    Treinar
+    Continuar treino
+  </button>
+
+  <button onclick="abrirFases()">
+    Estudar por fases
+  </button>
+
+  <button onclick="abrirVerbos()">
+    Estudar por verbos
   </button>
 
   <button onclick="abrirGerenciador()">
@@ -32,6 +40,44 @@
   </button>
 
   <button onclick="voltarInicio()">
+    Voltar
+  </button>
+
+</section>
+
+<section id="fases" style="display: none;">
+
+  <h1>Fases</h1>
+
+  <button onclick="treinarFase('fase1')">
+    Fase 1
+  </button>
+
+  <button onclick="treinarFase('fase2')">
+    Fase 2
+  </button>
+
+  <button onclick="treinarFase('fase3')">
+    Fase 3
+  </button>
+
+  <button onclick="treinarFase('fase4')">
+    Fase 4
+  </button>
+
+  <button onclick="voltarMenuDasFases()">
+    Voltar
+  </button>
+
+</section>
+
+<section id="verbos" style="display: none;">
+
+  <h1>Verbos</h1>
+
+  <div id="listaVerbos"></div>
+
+  <button onclick="voltarMenuDosVerbos()">
     Voltar
   </button>
 
