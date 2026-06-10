@@ -1,7 +1,17 @@
 let frases = JSON.parse(localStorage.getItem("frasesSalvas")) || [
-  { fase: "fase1", verbo: "feel", texto: "I feel more confident every day." },
-  { fase: "fase1", verbo: "speak", texto: "I speak English more naturally now." },
-  { fase: "fase2", verbo: "get", texto: "I’m getting over my fear of speaking." }
+  { fase: "fase1", verbo: "be", texto: "I am becoming more confident every day." },
+  { fase: "fase1", verbo: "get", texto: "I got home earlier today." },
+  { fase: "fase1", verbo: "think", texto: "We will think about it tomorrow." },
+
+  { fase: "fase2", verbo: "get", texto: "I’m getting over my fear of speaking English." },
+  { fase: "fase2", verbo: "be", texto: "She is being more patient with herself lately." },
+  { fase: "fase2", verbo: "think", texto: "What do you think about trying a different approach?" },
+
+  { fase: "fase3", verbo: "be", texto: "The more present I am, the easier it becomes to think in English." },
+  { fase: "fase3", verbo: "get", texto: "I’ve gotten much better at expressing complex ideas." },
+  { fase: "fase3", verbo: "think", texto: "I often think about how language shapes the way we see the world." },
+
+  { fase: "fase4", verbo: "expression", texto: "No worries, everything will work out fine." }
 ];
 
 let frasesTreino = [...frases];
