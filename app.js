@@ -298,3 +298,50 @@ function atualizarListaVerbos() {
   });
 
 }
+function mostrarBlocoVerbos(inicio, fim) {
+  const listaBlocos = document.getElementById("listaBlocosVerbos");
+  const lista = document.getElementById("listaVerbos");
+  const titulo = document.getElementById("tituloVerbos");
+
+  listaBlocos.style.display = "none";
+  lista.style.display = "block";
+
+  titulo.innerText = `Verbos ${inicio + 1}–${fim}`;
+
+  lista.innerHTML = "";
+
+  const bloco = verbosBase.slice(inicio, fim);
+
+  bloco.forEach(verbo => {
+    const quantidade = frases.filter(item => item.verbo === verbo).length;
+
+    const item = document.createElement("div");
+    item.className = "itemLista";
+
+    if (quantidade > 0) {
+      item.innerText = `✓ ${verbo.toUpperCase()} (${quantidade})`;
+      item.onclick = () => treinarVerbo(verbo);
+    } else {
+      item.innerText = `○ ${verbo.toUpperCase()} (0)`;
+      item.style.opacity = "0.35";
+    }
+
+    lista.appendChild(item);
+  });
+}
+
+function treinarVerbo(verboEscolhido) {
+  frasesTreino = frases.filter(item => item.verbo === verboEscolhido);
+
+  if (frasesTreino.length === 0) {
+    alert("Ainda não existem frases para esse verbo.");
+    return;
+  }
+
+  indice = 0;
+
+  document.getElementById("verbos").style.display = "none";
+  document.getElementById("treino").style.display = "block";
+
+  mostrarFrase();
+}
