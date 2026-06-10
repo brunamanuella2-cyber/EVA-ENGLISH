@@ -1,18 +1,53 @@
 let frases = JSON.parse(localStorage.getItem("frasesSalvas")) || [
-  "I feel more confident every day.",
-  "I speak English more naturally now.",
-  "I learn new words very quickly.",
-  "Every day I understand English better.",
-  "I enjoy practicing English daily."
+  {
+    fase: "fase1",
+    verbo: "feel",
+    texto: "I feel more confident every day."
+  },
+  {
+    fase: "fase1",
+    verbo: "speak",
+    texto: "I speak English more naturally now."
+  },
+  {
+    fase: "fase1",
+    verbo: "learn",
+    texto: "I learn new words very quickly."
+  },
+  {
+    fase: "fase1",
+    verbo: "understand",
+    texto: "Every day I understand English better."
+  },
+  {
+    fase: "fase1",
+    verbo: "enjoy",
+    texto: "I enjoy practicing English daily."
+  }
 ];
 
 let indice =
   parseInt(localStorage.getItem("indiceAtual")) || 0;
 
-function mostrarFrase() {
+let movendo = false;
+let inicioX = 0;
+let atualX = 0;
 
+function textoDaFrase(item) {
+  if (typeof item === "string") {
+    return item;
+  }
+
+  if (item && item.texto) {
+    return item.texto;
+  }
+
+  return "";
+}
+
+function mostrarFrase() {
   document.getElementById("frase").innerText =
-  frases[indice].texto;
+    textoDaFrase(frases[indice]);
 
   document.getElementById("contador").innerText =
     `Frase ${indice + 1} de ${frases.length}`;
@@ -48,6 +83,7 @@ function comecarTreino() {
 
   mostrarFrase();
 }
+
 function atualizarVelocidade() {
   const velocidade =
     document.getElementById("velocidade").value;
@@ -57,11 +93,14 @@ function atualizarVelocidade() {
 }
 
 function ouvirFrase() {
-  const frase = frases[indice].texto;
+  const frase =
+    textoDaFrase(frases[indice]);
 
-  const fala = new SpeechSynthesisUtterance(frase);
+  const fala =
+    new SpeechSynthesisUtterance(frase);
 
-  const vozes = speechSynthesis.getVoices();
+  const vozes =
+    speechSynthesis.getVoices();
 
   const vozIngles = vozes.find(voz =>
     voz.lang === "en-US" ||
@@ -85,86 +124,14 @@ function ouvirFrase() {
   speechSynthesis.speak(fala);
 }
 
-const card = document.getElementById("frase");
-
-let movendo = false;
-let inicioX = 0;
-let atualX = 0;
-
-card.addEventListener("touchstart", (e) => {
-  movendo = true;
-
-  inicioX = e.touches[0].clientX;
-
-  card.classList.add("arrastando");
-});
-
-card.addEventListener("touchmove", (e) => {
-  if (!movendo) return;
-
-  atualX = e.touches[0].clientX - inicioX;
-
-  const subir = Math.abs(atualX) * -0.15;
-const girar = atualX * 0.04;
-
-card.style.transform =
-  `translate(${atualX}px, ${subir}px) rotate(${girar}deg) scale(0.98)`;
-
-  const opacidade =
-    1 - Math.min(Math.abs(atualX) / 300, 0.7);
-
-  card.style.opacity = opacidade;
-});
-
-card.addEventListener("touchend", () => {
-  movendo = false;
-
-  card.classList.remove("arrastando");
-
-  if (atualX > 120) {
-
-    card.classList.add("saindo-direita");
-
-    setTimeout(() => {
-      fraseAnterior();
-
-      resetarCard();
-    }, 200);
-
-  } else if (atualX < -120) {
-
-    card.classList.add("saindo-esquerda");
-
-    setTimeout(() => {
-      proximaFrase();
-
-      resetarCard();
-    }, 200);
-
-  } else {
-    resetarCard();
-  }
-});
-
-function resetarCard() {
-  card.style.transform = "";
-
-  card.style.opacity = "";
-
-  card.classList.remove("saindo-direita");
-
-  card.classList.remove("saindo-esquerda");
-
-  atualX = 0;
-}
 function reiniciarTreino() {
-
   indice = 0;
 
-  localStorage.removeItem("indiceAtual");
+  localStorage.setItem("indiceAtual", indice);
 
   mostrarFrase();
 }
+
 function abrirMenu() {
   document.getElementById("inicio").style.display = "none";
   document.getElementById("treino").style.display = "none";
@@ -180,48 +147,45 @@ function voltarInicio() {
 }
 
 function abrirGerenciador() {
-
-  document.getElementById("menu").style.display =
-    "none";
-
-  document.getElementById("gerenciador").style.display =
-    "block";
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("treino").style.display = "none";
+  document.getElementById("gerenciador").style.display = "block";
 }
 
 function voltarMenu() {
-
-  document.getElementById("gerenciador").style.display =
-    "none";
-
-  document.getElementById("menu").style.display =
-    "block";
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("treino").style.display = "none";
+  document.getElementById("gerenciador").style.display = "none";
+  document.getElementById("menu").style.display = "block";
 }
+
 function voltarMenuDoTreino() {
   document.getElementById("treino").style.display = "none";
   document.getElementById("inicio").style.display = "none";
   document.getElementById("gerenciador").style.display = "none";
   document.getElementById("menu").style.display = "block";
 }
+
 function salvarFrases() {
-  const texto = document.getElementById("entradaFrases").value;
+  const texto =
+    document.getElementById("entradaFrases").value;
 
   const novasFrases = texto
-  .split("\n")
-  .map(linha => {
+    .split("\n")
+    .map(linha => {
+      const partes = linha.split("|");
 
-    const partes = linha.split("|");
-
-    return {
-      fase: partes[0]?.trim(),
-      verbo: partes[1]?.trim(),
-      texto: partes[2]?.trim()
-    };
-
-  })
-  .filter(frase => frase.texto);
+      return {
+        fase: partes[0]?.trim() || "",
+        verbo: partes[1]?.trim() || "",
+        texto: partes[2]?.trim() || ""
+      };
+    })
+    .filter(item => item.texto.length > 0);
 
   if (novasFrases.length === 0) {
-    alert("Cole pelo menos uma frase.");
+    alert("Cole pelo menos uma frase no formato: fase | verbo | frase");
     return;
   }
 
@@ -234,4 +198,70 @@ function salvarFrases() {
   alert(`Salvei ${frases.length} frases.`);
 
   voltarMenu();
+}
+
+const card = document.getElementById("frase");
+
+card.addEventListener("touchstart", (e) => {
+  movendo = true;
+
+  inicioX = e.touches[0].clientX;
+
+  card.classList.add("arrastando");
+});
+
+card.addEventListener("touchmove", (e) => {
+  if (!movendo) return;
+
+  atualX = e.touches[0].clientX - inicioX;
+
+  const subir =
+    Math.abs(atualX) * -0.15;
+
+  const girar =
+    atualX * 0.04;
+
+  card.style.transform =
+    `translate(${atualX}px, ${subir}px) rotate(${girar}deg) scale(0.98)`;
+
+  const opacidade =
+    1 - Math.min(Math.abs(atualX) / 300, 0.7);
+
+  card.style.opacity = opacidade;
+});
+
+card.addEventListener("touchend", () => {
+  movendo = false;
+
+  card.classList.remove("arrastando");
+
+  if (atualX > 120) {
+    card.classList.add("saindo-direita");
+
+    setTimeout(() => {
+      fraseAnterior();
+      resetarCard();
+    }, 200);
+
+  } else if (atualX < -120) {
+    card.classList.add("saindo-esquerda");
+
+    setTimeout(() => {
+      proximaFrase();
+      resetarCard();
+    }, 200);
+
+  } else {
+    resetarCard();
+  }
+});
+
+function resetarCard() {
+  card.style.transform = "";
+  card.style.opacity = "";
+
+  card.classList.remove("saindo-direita");
+  card.classList.remove("saindo-esquerda");
+
+  atualX = 0;
 }
