@@ -258,3 +258,30 @@ function resetarCard() {
   card.classList.remove("saindo-esquerda");
   atualX = 0;
 }
+function atualizarListaVerbos() {
+
+  const lista =
+    document.getElementById("listaVerbos");
+
+  lista.innerHTML = "";
+
+  const verbosUnicos =
+    [...new Set(frases.map(item => item.verbo))]
+      .sort();
+
+  verbosUnicos.forEach(verbo => {
+
+    const botao =
+      document.createElement("button");
+
+    botao.innerText =
+      verbo.toUpperCase();
+
+    botao.onclick = () =>
+      treinarVerbo(verbo);
+
+    lista.appendChild(botao);
+
+  });
+
+}
