@@ -7,11 +7,54 @@
   <title>Eva English</title>
 </head>
 <body>
-  <section id="inicio">
-    <h1>Eva English</h1>
-    <p>Meu app de repetição em inglês.</p>
-    <button onclick="comecarTreino()">Começar treino</button>
-  </section>
+<section id="inicio">
+
+  <h1>Eva English</h1>
+
+  <p>Meu app de repetição em inglês.</p>
+
+  <button onclick="abrirMenu()">
+    Começar
+  </button>
+
+</section>
+
+<section id="menu" style="display: none;">
+
+  <h1>Menu</h1>
+
+  <button onclick="comecarTreino()">
+    Treinar
+  </button>
+
+  <button onclick="abrirGerenciador()">
+    Gerenciar frases
+  </button>
+
+  <button onclick="voltarInicio()">
+    Voltar
+  </button>
+
+</section>
+
+<section id="gerenciador" style="display: none;">
+
+  <h1>Gerenciar frases</h1>
+
+  <textarea
+    id="entradaFrases"
+    placeholder="Cole uma frase por linha"
+  ></textarea>
+
+  <button onclick="salvarFrases()">
+    Salvar frases
+  </button>
+
+  <button onclick="voltarMenu()">
+    Voltar
+  </button>
+
+</section>
 
 <section id="treino" style="display: none;">
   <button id="botaoReiniciar" onclick="reiniciarTreino()">↺</button>
