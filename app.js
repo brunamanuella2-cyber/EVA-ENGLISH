@@ -288,6 +288,26 @@ function voltarMenuDosVerbos() {
   document.getElementById("menu").style.display = "block";
 }
 function treinarFase(faseEscolhida) {
+  frasesTreino = frases.filter(item => {
+    const faseItem = item.fase
+      .toLowerCase()
+      .replace(/\s/g, "");
+
+    return faseItem === faseEscolhida;
+  });
+
+  if (frasesTreino.length === 0) {
+    alert("Ainda não existem frases nessa fase.");
+    return;
+  }
+
+  indice = 0;
+
+  document.getElementById("fases").style.display = "none";
+  document.getElementById("treino").style.display = "block";
+
+  mostrarFrase();
+}
   frasesTreino = frases.filter(item => item.fase === faseEscolhida);
 
   if (frasesTreino.length === 0) {
