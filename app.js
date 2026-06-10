@@ -61,7 +61,7 @@ function mostrarFrase() {
 function proximaFrase() {
   indice++;
 
-  if (indice >= frases.length) {
+  if (indice >= frasesTreino.length) {
     indice = 0;
   }
 
@@ -72,7 +72,7 @@ function fraseAnterior() {
   indice--;
 
   if (indice < 0) {
-    indice = frases.length - 1;
+    indice = frasesTreino.length - 1;
   }
 
   mostrarFrase();
@@ -97,7 +97,7 @@ function atualizarVelocidade() {
 
 function ouvirFrase() {
   const frase =
-    textoDaFrase(frases[indice]);
+    textoDaFrase(frasesTreino[indice])
 
   const fala =
     new SpeechSynthesisUtterance(frase);
