@@ -6,13 +6,18 @@ const frases = [
   "I enjoy practicing English daily."
 ];
 
-let indice = 0;
+let indice =
+  parseInt(localStorage.getItem("indiceAtual")) || 0;
 
 function mostrarFrase() {
-  document.getElementById("frase").innerText = frases[indice];
+
+  document.getElementById("frase").innerText =
+    frases[indice];
 
   document.getElementById("contador").innerText =
     `Frase ${indice + 1} de ${frases.length}`;
+
+  localStorage.setItem("indiceAtual", indice);
 }
 
 function proximaFrase() {
