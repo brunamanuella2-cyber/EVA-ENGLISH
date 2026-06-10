@@ -22,4 +22,9 @@ function proximaFrase() {
   mostrarFrase();
 }
 
-window.onload = mostrarFrase;
+function comecarTreino() {
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("treino").style.display = "block";
+
+  mostrarFrase();
+}
