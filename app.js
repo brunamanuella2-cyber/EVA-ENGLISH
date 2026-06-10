@@ -135,11 +135,19 @@ function voltarInicio() {
 function voltarMenuDoTreino() {
   document.getElementById("treino").style.display = "none";
 
+  if (origemTreino === "fases") {
+    document.getElementById("fases").style.display = "block";
+    return;
+  }
+
   if (origemTreino === "verbos" && blocoVerbosAtual) {
     document.getElementById("verbos").style.display = "block";
     mostrarBlocoVerbos(blocoVerbosAtual.inicio, blocoVerbosAtual.fim);
     return;
   }
+
+  document.getElementById("menu").style.display = "block";
+}
 if (origemTreino === "fases") {
   document.getElementById("fases").style.display = "block";
   return;
@@ -214,7 +222,9 @@ function salvarFrases() {
 }
 
 function treinarFase(faseEscolhida) {
-  origemTreino = "fases";
+    origemTreino = "fases";
+  blocoVerbosAtual = null;
+  
   frasesTreino = frases.filter(item => {
     const faseItem = (item.fase || "")
       .toLowerCase()
