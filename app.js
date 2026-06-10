@@ -267,3 +267,22 @@ function resetarCard() {
 
   atualX = 0;
 }
+function abrirFases() {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("fases").style.display = "block";
+}
+
+function voltarMenuDasFases() {
+  document.getElementById("fases").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
+
+function abrirVerbos() {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("verbos").style.display = "block";
+}
+
+function voltarMenuDosVerbos() {
+  document.getElementById("verbos").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
