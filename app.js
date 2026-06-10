@@ -296,6 +296,7 @@ function atualizarListaVerbos() {
     lista.appendChild(botao);
 
   });
+  
 }
 function mostrarBlocoVerbos(inicio, fim) {
   const listaBlocos = document.getElementById("listaBlocosVerbos");
