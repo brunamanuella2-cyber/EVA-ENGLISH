@@ -148,7 +148,9 @@ function abrirVerbos() {
   document.getElementById("menu").style.display = "none";
   document.getElementById("verbos").style.display = "block";
 
-  atualizarListaVerbos();
+  document.getElementById("tituloVerbos").innerText = "Verbos";
+  document.getElementById("listaBlocosVerbos").style.display = "block";
+  document.getElementById("listaVerbos").style.display = "none";
 }
 
 function voltarMenuDosVerbos() {
@@ -344,4 +346,18 @@ function treinarVerbo(verboEscolhido) {
   document.getElementById("treino").style.display = "block";
 
   mostrarFrase();
+}
+function voltarTelaVerbos() {
+  const listaBlocos = document.getElementById("listaBlocosVerbos");
+  const lista = document.getElementById("listaVerbos");
+  const titulo = document.getElementById("tituloVerbos");
+
+  if (lista.style.display === "block") {
+    lista.style.display = "none";
+    listaBlocos.style.display = "block";
+    titulo.innerText = "Verbos";
+  } else {
+    document.getElementById("verbos").style.display = "none";
+    document.getElementById("menu").style.display = "block";
+  }
 }
