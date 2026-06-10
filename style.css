@@ -83,3 +83,20 @@ button {
   padding: 10px 16px;
   font-size: 18px;
 }
+.cardArea {
+  max-width: 500px;
+  margin: 30px auto 20px auto;
+}
+
+.cardArea #infoFrase {
+  display: block;
+  text-align: left;
+  margin: 0 0 8px 8px;
+  color: #d1d5db;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.cardArea #frase {
+  margin: 0;
+}
