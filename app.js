@@ -10,6 +10,9 @@ let indice = 0;
 
 function mostrarFrase() {
   document.getElementById("frase").innerText = frases[indice];
+
+  document.getElementById("contador").innerText =
+    `Frase ${indice + 1} de ${frases.length}`;
 }
 
 function proximaFrase() {
@@ -28,10 +31,12 @@ function comecarTreino() {
 
   mostrarFrase();
 }
+
 function ouvirFrase() {
   const frase = frases[indice];
 
   const fala = new SpeechSynthesisUtterance(frase);
+
   const vozes = speechSynthesis.getVoices();
 
   const vozIngles = vozes.find(voz =>
@@ -47,7 +52,13 @@ function ouvirFrase() {
     fala.lang = "en-US";
   }
 
-  fala.rate = 0.85;
+  const velocidade =
+    document.getElementById("velocidade").value;
+
+  fala.rate = velocidade;
+
+  document.getElementById("valorVelocidade").innerText =
+    velocidade + "x";
 
   speechSynthesis.cancel();
   speechSynthesis.speak(fala);
