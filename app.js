@@ -287,3 +287,18 @@ function voltarMenuDosVerbos() {
   document.getElementById("verbos").style.display = "none";
   document.getElementById("menu").style.display = "block";
 }
+function treinarFase(faseEscolhida) {
+  frasesTreino = frases.filter(item => item.fase === faseEscolhida);
+
+  if (frasesTreino.length === 0) {
+    alert("Ainda não existem frases nessa fase.");
+    return;
+  }
+
+  indice = 0;
+
+  document.getElementById("fases").style.display = "none";
+  document.getElementById("treino").style.display = "block";
+
+  mostrarFrase();
+}
