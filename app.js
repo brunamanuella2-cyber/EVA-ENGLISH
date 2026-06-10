@@ -157,3 +157,11 @@ function resetarCard() {
 
   atualX = 0;
 }
+function reiniciarTreino() {
+
+  indice = 0;
+
+  localStorage.removeItem("indiceAtual");
+
+  mostrarFrase();
+}
