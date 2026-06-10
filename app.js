@@ -289,6 +289,10 @@ function voltarMenuDosVerbos() {
 }
 function treinarFase(faseEscolhida) {
   frasesTreino = frases.filter(item => {
+    if (!item.fase) {
+      return false;
+    }
+
     const faseItem = item.fase
       .toLowerCase()
       .replace(/\s/g, "");
@@ -303,6 +307,10 @@ function treinarFase(faseEscolhida) {
 
   indice = 0;
 
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("gerenciador").style.display = "none";
+  document.getElementById("verbos").style.display = "none";
   document.getElementById("fases").style.display = "none";
   document.getElementById("treino").style.display = "block";
 
