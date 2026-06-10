@@ -140,7 +140,10 @@ function voltarMenuDoTreino() {
     mostrarBlocoVerbos(blocoVerbosAtual.inicio, blocoVerbosAtual.fim);
     return;
   }
-
+if (origemTreino === "fases") {
+  document.getElementById("fases").style.display = "block";
+  return;
+}
   document.getElementById("menu").style.display = "block";
 }
 
@@ -211,6 +214,7 @@ function salvarFrases() {
 }
 
 function treinarFase(faseEscolhida) {
+  origemTreino = "fases";
   frasesTreino = frases.filter(item => {
     const faseItem = (item.fase || "")
       .toLowerCase()
