@@ -1,4 +1,4 @@
-const frases = [
+let frases = JSON.parse(localStorage.getItem("frasesSalvas")) || [
   "I feel more confident every day.",
   "I speak English more naturally now.",
   "I learn new words very quickly.",
@@ -201,4 +201,27 @@ function voltarMenuDoTreino() {
   document.getElementById("inicio").style.display = "none";
   document.getElementById("gerenciador").style.display = "none";
   document.getElementById("menu").style.display = "block";
+}
+function salvarFrases() {
+  const texto = document.getElementById("entradaFrases").value;
+
+  const novasFrases = texto
+    .split("\n")
+    .map(frase => frase.trim())
+    .filter(frase => frase.length > 0);
+
+  if (novasFrases.length === 0) {
+    alert("Cole pelo menos uma frase.");
+    return;
+  }
+
+  frases = novasFrases;
+  indice = 0;
+
+  localStorage.setItem("frasesSalvas", JSON.stringify(frases));
+  localStorage.setItem("indiceAtual", indice);
+
+  alert(`Salvei ${frases.length} frases.`);
+
+  voltarMenu();
 }
