@@ -73,11 +73,31 @@
 
 <section id="verbos" style="display: none;">
 
-  <h1>Verbos</h1>
+  <h1 id="tituloVerbos">Verbos</h1>
 
-  <div id="listaVerbos"></div>
+  <div id="listaBlocosVerbos">
 
-  <button onclick="voltarMenuDosVerbos()">
+    <div class="itemLista" onclick="mostrarBlocoVerbos(0, 25)">
+      ▶ Verbos 1–25
+    </div>
+
+    <div class="itemLista" onclick="mostrarBlocoVerbos(25, 50)">
+      ▶ Verbos 26–50
+    </div>
+
+    <div class="itemLista" onclick="mostrarBlocoVerbos(50, 75)">
+      ▶ Verbos 51–75
+    </div>
+
+    <div class="itemLista" onclick="mostrarBlocoVerbos(75, 100)">
+      ▶ Verbos 76–100
+    </div>
+
+  </div>
+
+  <div id="listaVerbos" style="display: none;"></div>
+
+  <button class="botaoSecundario" onclick="voltarMenuDosVerbos()">
     Voltar
   </button>
 
