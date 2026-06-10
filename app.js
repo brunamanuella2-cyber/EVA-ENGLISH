@@ -206,9 +206,19 @@ function salvarFrases() {
   const texto = document.getElementById("entradaFrases").value;
 
   const novasFrases = texto
-    .split("\n")
-    .map(frase => frase.trim())
-    .filter(frase => frase.length > 0);
+  .split("\n")
+  .map(linha => {
+
+    const partes = linha.split("|");
+
+    return {
+      fase: partes[0]?.trim(),
+      verbo: partes[1]?.trim(),
+      texto: partes[2]?.trim()
+    };
+
+  })
+  .filter(frase => frase.texto);
 
   if (novasFrases.length === 0) {
     alert("Cole pelo menos uma frase.");
