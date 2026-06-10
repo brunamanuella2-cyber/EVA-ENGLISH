@@ -165,3 +165,38 @@ function reiniciarTreino() {
 
   mostrarFrase();
 }
+function abrirMenu() {
+
+  document.getElementById("inicio").style.display =
+    "none";
+
+  document.getElementById("menu").style.display =
+    "block";
+}
+
+function voltarInicio() {
+
+  document.getElementById("menu").style.display =
+    "none";
+
+  document.getElementById("inicio").style.display =
+    "block";
+}
+
+function abrirGerenciador() {
+
+  document.getElementById("menu").style.display =
+    "none";
+
+  document.getElementById("gerenciador").style.display =
+    "block";
+}
+
+function voltarMenu() {
+
+  document.getElementById("gerenciador").style.display =
+    "none";
+
+  document.getElementById("menu").style.display =
+    "block";
+}
