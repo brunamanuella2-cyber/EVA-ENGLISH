@@ -42,12 +42,12 @@ function fraseAnterior() {
 
 function comecarTreino() {
   document.getElementById("inicio").style.display = "none";
-
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("gerenciador").style.display = "none";
   document.getElementById("treino").style.display = "block";
 
   mostrarFrase();
 }
-
 function atualizarVelocidade() {
   const velocidade =
     document.getElementById("velocidade").value;
@@ -166,21 +166,17 @@ function reiniciarTreino() {
   mostrarFrase();
 }
 function abrirMenu() {
-
-  document.getElementById("inicio").style.display =
-    "none";
-
-  document.getElementById("menu").style.display =
-    "block";
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("treino").style.display = "none";
+  document.getElementById("gerenciador").style.display = "none";
+  document.getElementById("menu").style.display = "block";
 }
 
 function voltarInicio() {
-
-  document.getElementById("menu").style.display =
-    "none";
-
-  document.getElementById("inicio").style.display =
-    "block";
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("treino").style.display = "none";
+  document.getElementById("gerenciador").style.display = "none";
+  document.getElementById("inicio").style.display = "block";
 }
 
 function abrirGerenciador() {
