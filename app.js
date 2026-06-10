@@ -28,3 +28,13 @@ function comecarTreino() {
 
   mostrarFrase();
 }
+function ouvirFrase() {
+  const frase = frases[indice];
+
+  const fala = new SpeechSynthesisUtterance(frase);
+
+  fala.lang = "en-US";
+  fala.rate = 0.9;
+
+  speechSynthesis.speak(fala);
+}
